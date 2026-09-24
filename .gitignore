@@ -1,3 +1,7 @@
 node_modules/
 reports/
 artifacts/
+playwright-report/
+reporting-labs/
+reporting-labs.history.json
+test-results/

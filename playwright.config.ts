@@ -2,24 +2,15 @@ import { defineConfig, devices } from '@playwright/test';
 import * as dotenv from 'dotenv';
 import path from 'path';
 
-const environment = process.env.TEST_ENV ?? 'qa';
-const environmentFile = path.resolve(__dirname, `config/environments/${environment}.env`);
 
-const environmentConfig = dotenv.config({
-  path: environmentFile,
-});
-
-if (environmentConfig.error) {
-  throw new Error(`Environment configuration not found: ${environmentFile}`);
-}
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
   testDir: './tests',
 
-  globalSetup: './src/fixtures/global_setUp.ts',
-  globalTeardown: './src/fixtures/global_tearDown.ts',
+  // globalSetup: './src/fixtures/global_setUp.ts',
+  // globalTeardown: './src/fixtures/global_tearDown.ts',
 
   fullyParallel: true,
 
@@ -42,19 +33,8 @@ export default defineConfig({
 
   // HTML report + JUnit report for CI/CD integration.
   reporter: [
-    [
-      'html',
-      {
-        outputFolder: './playwright-report',
-        open: 'never',
-      },
-    ],
-    [
-      'junit',
-      {
-        outputFile: './test-results/results.xml',
-      },
-    ],
+    ['html', { open: 'never' }],
+    ['reporting-labs'],
   ],
 
   use: {
