@@ -34,9 +34,11 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.d.ts",
     "tests/**/*.ts",
     "playwright.config.ts",
-    "mcp/**/*.ts",
+    "eslint.config.ts",
+    "mcp/**/*.ts"
   ],
   "exclude": [
     "node_modules",
